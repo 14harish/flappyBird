@@ -85,7 +85,7 @@ function updateGameArea() {
         myGameArea.stop();
         startGame();
     }else if(myGamePiece.crash(s2)){
-        myGameArea.stop();
+myGameArea.stop();
         startGame();
     }
     else{
