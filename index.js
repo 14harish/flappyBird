@@ -56,7 +56,7 @@ function component(width, height, color, x, y) {
     this.check = function(){
         if(this.x == 0){
             this.x = 730;
-            this.y = Math.random()*200;
+            this.y = Math.random()*400;
         }
     }
 }
