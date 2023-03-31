@@ -4,30 +4,11 @@ var myObstacle;
 
 function startGame() {
     myGamePiece = new component(30, 30, "red", 10, 120);
-    myObstacle  = new component(10, 200, "green", 300, 120);    
-    s2  = new component(14, 202, "pink", 500, 100);    
+    myObstacle  = new component(10, 200, "green", 400, 120);    
+    s2  = new component(14, 200, "pink", 500, 170);    
+    s3  = new component(14, 200, "violet", 600, 100);    
+    s4  = new component(14, 200, "orange", 700, 100);    
     myGameArea.start();
-}
-
-var obstciles ={
-    dow1 :{
-        x:800,
-        y:120,
-        width :10,
-        height:200
-    },
-    top1 :{
-        x:800,
-        y:8,
-        width :10,
-        height:200
-    },
-    dow2 :{
-        x:800,
-        y:120,
-        width :10,
-        height:200
-    }
 }
 var myGameArea = {
     canvas : document.createElement("canvas"),
@@ -74,8 +55,8 @@ function component(width, height, color, x, y) {
     }    
     this.check = function(){
         if(this.x == 0){
-            this.x = obstciles.dow1.x;
-            this.y = obstciles.dow1.y;
+            this.x = 730;
+            this.y = Math.random()*200;
         }
     }
 }
@@ -83,21 +64,39 @@ function component(width, height, color, x, y) {
 function updateGameArea() {
     if(myGamePiece.crash(myObstacle)){
         myGameArea.stop();
+        alert("Restart");
         startGame();
     }else if(myGamePiece.crash(s2)){
-myGameArea.stop();
+        myGameArea.stop();
+        alert("Restart");
         startGame();
     }
+    else if(myGamePiece.crash(s3)){
+        myGameArea.stop();
+        alert("Restart");
+                startGame();
+            }
+    else if(myGamePiece.crash(s4)){
+                myGameArea.stop();
+                alert("Restart");
+                        startGame();
+        }
     else{
     myGameArea.clear();
     myObstacle.update();
+    s3.update();
+    s4.update();
     myObstacle.x -= 1;        
     s2.update();
     s2.x -= 1;        
+    s3.x -= 1;        
+    s4.x -= 1;        
     myGamePiece.newPos();    
     myGamePiece.update();
     myObstacle.check();
     s2.check();
+    s4.check();
+    s3.check();
   }
  }
 
